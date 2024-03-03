@@ -30,7 +30,25 @@ fn main() {
             //业务逻辑
         }
     */
-    let double = |x|{x*2};
+    // let double = |x|{x*2};
+    //
+    // let add = |a,b|{a+b};
 
-    let add = |a,b|{a+b};
+    let print_hello = || println!("Hello, world!");
+
+    apply(print_hello);
+
+    let closure = create_closure();
+    closure();
+}
+fn apply<F>(f:F)
+where
+    F:FnOnce(),
+{
+    f();
+}
+
+fn create_closure() -> impl Fn() {
+    let x = 5;
+    move || println!("The value of x is: {}", x)
 }

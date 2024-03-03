@@ -30,7 +30,30 @@ fn main() {
     //在这个地方我们使用一个实现了Display特质的结构体传入函数show2
     show2(brand);
 }
-//泛型函数,下面这个函数表示传入show2的函数一定实现Display的特质，否则会报错
+
+/*
+    1.泛型函数 语法格式
+    fn function_name<T[:trait_name]>(param1:T,[other_params]){
+        函数实现代码
+    }
+    fn max<T>(array: &[T]) -> T //这行代码的意思是<T>说明函数是一个泛型函数，函数有一个参数，参数类型是一个包含多个泛型数据的切片，且该函数返回值是一个泛型数据
+    2.泛型结构体
+    struct struct_name<T> {
+        field:T
+    }
+    3.泛型枚举
+    enum Option<T> {
+        Some(T),
+        None
+    }
+    enum Result<T, E> {
+        Ok(T),
+        Err(E)
+    }
+    4.在trait中使用泛型
+
+*/
+//泛型函数,下面这个函数表示传入show2的函数接受一个泛型类型的参数，且该泛型一定实现Display的特质，否则会报错
 fn show2<T:Display>(t:T){
     println!("{}",t);
 }
